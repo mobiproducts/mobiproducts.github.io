@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Github Viewer</title>
+    <link rel="stylesheet" href="main.css"/>
+</head>
+<body ng-app="githubViewer" ng-controller="mainController">
+<h2>Github Viewer</h2>
+<!-- 	<input ng-model="inputText" type="text">
+	{{greeting}}, I am writing this {{inputText}} -->
+
+
+<div>{{error}}</div>
+
+<form ng-submit="search(username)">
+    <input type="search" required ng-model="username" placeholder="Enter a github user"/>
+    <input type="submit" value="Search User"/>
+</form>
+
+<form ng-submit="showUsers()">
+    <input type="submit" value="Show Github Users"/>
+</form>
+
+<div class="imgInfo" ng-repeat="person in users" ng-hide="user">
+    <div class="inner-img">
+        <img class="imgUser" ng-click="showRepos(person)" ng-src="{{person.avatar_url}}" title="{{person.login}}">
+        <!--{{person.login}}-->
+        <span>{{person.login}}</span>
+
+    </div>
+
+</div>
+
+
+<table ng-show="user">
+    <div>
+        <h2>{{user.name}}</h2>
+
+        <div ng-show="user">
+            <img class="imgProfile" ng-src="{{user.avatar_url}}" title="{{user.name}}"/>
+        </div>
+        <!--<img ng-src="https://secure.gravatar.com/avatar/{{user.avatar_id}}" title="{{user.name}}"/>-->
+
+
+    </div>
+    <tr>
+        <th><a href="" ng-click="sortField='name'; reverse=!reverse">Name</a></th>
+        <th><a href="" ng-click="sortField='stargazers_count'; reverse=!reverse">Stars</a></th>
+        <th><a href="" ng-click="sortField='language'; reverse=!reverse">Language</a></th>
+    </tr>
+    <tr ng-repeat="repo in repos | filter:username | orderBy:sortField:!reverse">
+        <td>{{repo.name}}</td>
+        <td>{{repo.stargazers_count | number}}</td>
+        <td>{{repo.language}}</td>
+    </tr>
+</table>
+<!-- 
+	<ul>
+		<li ng-repeat="category in foodCategory">{{category.Id}}-{{category.Name}}</li>
+		
+	</ul> -->
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.js"></script>
+
+<script src="app.js"></script>
+</body>
+</html>

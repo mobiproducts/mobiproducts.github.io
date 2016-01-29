@@ -1,0 +1,63 @@
+/*state of item about to added to scope
+from hidden to appear or fade in at transition of .75second
+*/
+.ng-enter{
+    transition: 1s;
+    opacity: 0
+}
+
+.ng-enter-stagger{
+    transition-delay: 0.1s;
+}
+
+/*state of item ends up scope
+show at opacity: 1*/
+.ng-enter-active{
+    opacity: 1;
+}
+
+.ng-leave-stagger{
+    transition-delay: 0.1s;
+}
+
+.ng-leave{
+    transition: 1s;
+    opacity: 1;
+}
+
+.ng-leave-active{
+    opacity: 0;
+}
+
+h5{
+    color: blue;
+}
+
+.imgInfo{
+    padding: 8px;
+    width: 100px;
+    display: inline-block
+}
+.imgUser{
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px grey;
+}
+.inner-img{
+    text-align: center;
+}
+
+.imgUser:hover{
+    box-shadow: 0 0 0 3px blue;
+    /*text-align: center;*/
+    /*border: 3px solid blue;*/
+}
+
+.inner-img:hover{
+    color: blue;
+}
+.imgProfile{
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px grey;
+}
